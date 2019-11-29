@@ -34,7 +34,7 @@ public class MainCON {
 	stage.show();
         
     }
-    
+
     @FXML
     public void profile() throws IOException
     {
@@ -47,6 +47,32 @@ public class MainCON {
 	stage.show();       
     }
     
+    //Announcement
+    @FXML
+    public void viewAnnouncement() throws IOException
+    {
+        Parent root;
+        root = FXMLLoader.load(getClass().getResource("/View/ViewAnnouncementUI.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+	stage.setTitle("Create Announcements");
+	stage.setScene(scene);
+	stage.show();       
+    }
+    
+    @FXML
+    public void createAnnouncement() throws IOException
+    {
+        Parent root;
+        root = FXMLLoader.load(getClass().getResource("/View/CreateAnnouncementUI.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+	stage.setTitle("View Announcements");
+	stage.setScene(scene);
+	stage.show();       
+    }
+    //End Announcement
+  
     //Admin
     @FXML
     public void adminAddCourse() throws IOException {

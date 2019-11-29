@@ -2,7 +2,6 @@ package Model;
 
 import Controller.LoginCON;
 import Controller.MainCON;
-import static Enum.CourseType.Compulsory;
 import java.io.IOException;
 import javafx.stage.Stage;
 
@@ -18,6 +17,8 @@ public class Main extends javafx.application.Application {
         System.out.println("Users imported");
         Course.importFromFile();
         System.out.println("Courses imported");
+        Announcement.importFromFile();
+        System.out.println("Announcements imported");
         // End Import Data
         
         launch(args);
