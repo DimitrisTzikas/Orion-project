@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.AddDegreeCON">
+    <stylesheets>
+        <URL value="@/CSS/adddegreeui.css" />
+    </stylesheets>
+   <children>
+      <Label layoutX="165.0" layoutY="127.0" text="Course:">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font></Label>
+      <Label layoutX="164.0" layoutY="195.0" text="Student:">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font></Label>
+      <Label layoutX="164.0" layoutY="257.0" text="Degree:">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font></Label>
+      <Button fx:id="cancelButton" layoutX="37.0" layoutY="331.0" mnemonicParsing="false" onAction="#cancel" prefHeight="34.0" prefWidth="98.0" text="Cancel">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font></Button>
+      <Button fx:id="addDegreeButton" layoutX="460.0" layoutY="331.0" mnemonicParsing="false" onAction="#addDegree" prefHeight="34.0" prefWidth="98.0" text="Add Degree">
+         <font>
+            <Font name="System Bold Italic" size="14.0" />
+         </font></Button>
+      <ComboBox fx:id="comCourse" layoutX="237.0" layoutY="123.0" onAction="#courseSelected" prefHeight="25.0" prefWidth="200.0" />
+      <ComboBox fx:id="comStudent" layoutX="237.0" layoutY="191.0" onAction="#studentSelected" prefWidth="200.0" />
+      <ComboBox fx:id="comDegree" layoutX="237.0" layoutY="253.0" onAction="#degreeSelected" prefWidth="200.0" />
+      <Label alignment="CENTER" layoutX="209.0" layoutY="31.0" prefHeight="33.0" prefWidth="182.0" text="Teacher Add Degree" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold Italic" size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
