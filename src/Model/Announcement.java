@@ -72,7 +72,8 @@ public class Announcement implements Serializable {
             writeStream.close();
 
         }catch (IOException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+            System.out.println("CANT save to ANNOUNCEMENTS");
         }
     }
     
@@ -84,7 +85,8 @@ public class Announcement implements Serializable {
             Announcement.announcements = (ArrayList<Announcement>) readStream.readObject();
             readStream.close();
         }catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+            System.out.println("CANT import ANNOUNCEMENTS");
         }
     }
     

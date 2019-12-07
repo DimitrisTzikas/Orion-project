@@ -96,7 +96,7 @@ public abstract class User implements Serializable {
     
     public static void writeToFile() {
         try{
-            FileOutputStream writeData = new FileOutputStream("Users.ser");
+            FileOutputStream writeData = new FileOutputStream("src/Users.ser");
             ObjectOutputStream writeStream = new ObjectOutputStream(writeData);
 
             writeStream.writeObject(User.users);
@@ -110,7 +110,7 @@ public abstract class User implements Serializable {
     
     public static void importFromFile() {
         try{
-            FileInputStream readData = new FileInputStream("Users.ser");
+            FileInputStream readData = new FileInputStream("src/Users.ser");
             ObjectInputStream readStream = new ObjectInputStream(readData);
 
             User.users = (ArrayList<User>) readStream.readObject();

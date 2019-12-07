@@ -15,7 +15,7 @@
         <URL value="@/CSS/mainui.css" />
     </stylesheets>
    <children>
-      <Pane layoutX="2.0" prefHeight="486.0" prefWidth="743.0">
+      <Pane layoutX="2.0" onMousePressed="#clickItem" prefHeight="486.0" prefWidth="743.0">
          <children>
             <Button fx:id="cancelButton" layoutX="48.0" layoutY="425.0" mnemonicParsing="false" onAction="#exit" prefWidth="141.0" text="Back" />
             <Label layoutX="33.0" layoutY="29.0" text="Courses">
@@ -30,7 +30,7 @@
                 <TableColumn fx:id="tDegreeColumn" minWidth="5.0" prefWidth="67.0" text="Degree" />
               </columns>
             </TableView>
-            <TableView fx:id="aTable" layoutX="226.0" layoutY="243.0" prefHeight="158.0" prefWidth="292.0">
+            <TableView fx:id="aTable" layoutX="226.0" layoutY="243.0" onMouseClicked="#clickItem" prefHeight="158.0" prefWidth="292.0">
                <columns>
                   <TableColumn fx:id="aNameColumn" prefWidth="230.0" text="Name" />
                   <TableColumn fx:id="aAddColumn" prefWidth="61.0" text="ADD" />

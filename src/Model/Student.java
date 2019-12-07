@@ -42,4 +42,8 @@ public class Student extends User {
         return "Student{" + "semester=" + semester + ", username=" + this.username + ", password=" + password + ", name=" + name + ", surname=" + surname + ", birthday=" + birthday + ", email=" + email + ", phoneNumber=" + phoneNumber + ", registration=" + registration + '}';
     }
 
+    public ArrayList<Integer> getDegrees() {
+        return degree;
+    }
+
 }
