@@ -20,6 +20,7 @@ public class Main extends javafx.application.Application {
         System.out.println("Courses imported");
         Announcement.importFromFile();
         System.out.println("Announcements imported");
+        User.addUser(new Student(100,"st","123","A","B", new Date(),"AB","ABB"));
         // End Import Data
         
         launch(args);

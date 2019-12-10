@@ -28,14 +28,15 @@ public class ManageCoursesStudentCON implements Initializable {
     ArrayList<Course> StudentCourses;
     ArrayList<Integer> degrees;
     ArrayList<Course> availableCourses;
+    ArrayList<Course> coursesToAdd = new ArrayList();
    //@FXML
    // private ComboBox comCourses;
     
     @FXML
     private Button cancelButton;
-    @FXML private TableView<TableViewTakenCourse> tTable ;
-    @FXML private TableColumn<TableViewTakenCourse,String> tNameColumn;
-    @FXML private TableColumn<TableViewTakenCourse,Integer> tDegreeColumn;
+    @FXML private TableView<TableViewAvailableCourse> tTable ;
+    @FXML private TableColumn<TableViewAvailableCourse,String> tNameColumn;
+    @FXML private TableColumn<TableViewAvailableCourse,String> tDegreeColumn;
    
     //available table
     @FXML private TableView<TableViewAvailableCourse> aTable;
@@ -62,7 +63,7 @@ public class ManageCoursesStudentCON implements Initializable {
        aAddColumn.setCellValueFactory(new PropertyValueFactory<>("add"));
        
        tNameColumn.setCellValueFactory(new PropertyValueFactory<>("course"));
-       tDegreeColumn.setCellValueFactory(new PropertyValueFactory<>("degree"));
+       tDegreeColumn.setCellValueFactory(new PropertyValueFactory<>("add"));
        
      
        StudentCourses = ((Student)Main.user).getCourses();
@@ -75,7 +76,7 @@ public class ManageCoursesStudentCON implements Initializable {
             availableCourses.remove(course);
         });
        displayAvailableCourses();
-       displayTakenCourse();
+       displaySelectedCourse();
 
 
     }  
@@ -86,7 +87,19 @@ public class ManageCoursesStudentCON implements Initializable {
     {
         if (event.getClickCount() == 2) //Checking double click
         {
-            addNewCourse(aTable.getSelectionModel().getSelectedItem().getCourse());
+            try{
+                addNewCourse(aTable.getSelectionModel().getSelectedItem().getCourse());
+            }catch(Exception ex){System.out.println("click on empty space");}
+        }
+    }
+    @FXML
+    public void clickItemR(MouseEvent event)
+    {
+        if (event.getClickCount() == 2) //Checking double click
+        {
+            try{
+                removeNewCourse(tTable.getSelectionModel().getSelectedItem().getCourse());
+            }catch(Exception ex){System.out.println("click on empty space");}
         }
     }
   
@@ -94,10 +107,25 @@ public class ManageCoursesStudentCON implements Initializable {
     public void addNewCourse(String courseName){
         Course course = Course.getCourse(courseName);//bres to courses apo ton pinaka
         availableCourses.remove(course);
-        course.addStudent(((Student)Main.user));
+        coursesToAdd.add(course);
         displayAvailableCourses();  
-        displayTakenCourse();
+        displaySelectedCourse();
              
+    }
+    public void removeNewCourse(String courseName){
+        Course course = Course.getCourse(courseName);
+        coursesToAdd.remove(course);
+        availableCourses.add(course);
+        displayAvailableCourses();
+        displaySelectedCourse();
+    }
+    public void addCourses(){
+        //for each course in coursesToAdd add them to student
+        coursesToAdd.forEach((course) -> {
+            System.out.println("Add"+course.getTitle()+" course to student");
+            course.addStudent(((Student)Main.user));
+        });
+        exit();
     }
     
     private void displayAvailableCourses(){
@@ -112,24 +140,17 @@ public class ManageCoursesStudentCON implements Initializable {
        aTable.setItems(model);
     }
     
-    private void displayTakenCourse(){
+    private void displaySelectedCourse(){
         //// for each course a student has display it
-        ArrayList<TableViewTakenCourse> tCourseTV = new ArrayList();//the array that containts the courses with a +
-        System.out.println("Selected Courses");
-        for(int i = 0;i<StudentCourses.size();i++){
-            if( StudentCourses.get(i).getTitle()==null){continue;}
-            System.out.print(StudentCourses.get(i).getTitle()+" ");
-            if( degrees.get(i)==null){
-                tCourseTV.add(new TableViewTakenCourse(StudentCourses.get(i).getTitle(),0));
-            }
-            else{
-                tCourseTV.add(new TableViewTakenCourse(StudentCourses.get(i).getTitle(),degrees.get(i)));
-                System.out.print("  "+degrees.get(i)+"\n");
-            }
-        }
-        System.out.println("Selected Courses END");
-       ObservableList<TableViewTakenCourse> model2 = FXCollections.observableArrayList(tCourseTV);
-       tTable.setItems(model2);
+        ArrayList<TableViewAvailableCourse> aCourseTV = new ArrayList();//the array that containts the courses with a +
+        System.out.println("selected available Courses Courses");
+        coursesToAdd.forEach((course) -> {
+            System.out.println(course.getTitle());
+            aCourseTV.add(new TableViewAvailableCourse(course.getTitle()));
+        });
+       System.out.println("selected available Courses END");
+       ObservableList<TableViewAvailableCourse> model = FXCollections.observableArrayList(aCourseTV);
+       tTable.setItems(model);
     }
 
 }
