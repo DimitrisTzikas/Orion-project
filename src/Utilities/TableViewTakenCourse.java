@@ -9,6 +9,10 @@ package Utilities;
  *
  * @author Christos
  */
+
+// This code is useless and i don't like it
+// This is the kind of code no person want's to see
+// Garbage code
 public class TableViewTakenCourse {
     private final String course;
     private final int degree;

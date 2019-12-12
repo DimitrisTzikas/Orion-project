@@ -102,7 +102,7 @@ public class Course implements Serializable {
     
     public static void writeToFile() {
         try{
-            FileOutputStream writeData = new FileOutputStream("src/Courses.ser");
+            FileOutputStream writeData = new FileOutputStream("Courses.ser");
             ObjectOutputStream writeStream = new ObjectOutputStream(writeData);
 
             writeStream.writeObject(Course.courses);
@@ -116,7 +116,7 @@ public class Course implements Serializable {
     
     public static void importFromFile() {
         try{
-            FileInputStream readData = new FileInputStream("src/Courses.ser");
+            FileInputStream readData = new FileInputStream("Courses.ser");
             ObjectInputStream readStream = new ObjectInputStream(readData);
 
             Course.courses = (ArrayList<Course>) readStream.readObject();

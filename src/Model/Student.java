@@ -20,6 +20,53 @@ public class Student extends User {
         return this.courses;
     }
     
+    public ArrayList<Course> getAvaibleCourses() {
+        ArrayList<Course> availableCourses = new ArrayList<Course>(Course.getCourses());
+        availableCourses.removeAll(this.courses);
+        return availableCourses;
+    }
+    
+    public ArrayList<Course> getPassedCourses() {
+        ArrayList<Course> passedCourses = new ArrayList<Course>(this.courses);
+        int index = 0;
+        for(Course temp:passedCourses){
+            if(this.degree.get(index) < 5)
+                passedCourses.remove(temp);
+            index++;
+        }
+        return passedCourses;
+    }
+    
+    public ArrayList<Course> getNotPassedCourses() {
+        ArrayList<Course> notPassedCourses = new ArrayList<Course>(this.courses);
+        int index = 0;
+        for(Course temp:notPassedCourses){
+            if(this.degree.get(index) >= 5)
+                notPassedCourses.remove(temp);
+            index++;
+        }
+        return notPassedCourses;
+    }
+    
+    public ArrayList<Course> getRunningCourses() {
+        ArrayList<Course> runningCourses = new ArrayList<Course>(this.courses);
+        int index = 0;
+        for(Course temp:runningCourses){
+            if(this.degree.get(index) == -1)
+                runningCourses.remove(temp);
+            index++;
+        }
+        return runningCourses;
+    }
+    
+    public boolean addDegree(Course course, int degree) {
+        if(this.courses.indexOf(course) != -1){
+            this.degree.add(this.courses.indexOf(course), degree);
+            return true;
+        }
+        return false;
+    }
+    
     public void addCourse(Course course) {
         this.courses.add(course);
         this.degree.add(null);
@@ -37,13 +84,13 @@ public class Student extends User {
         return this.semester;
     }
 
+    public ArrayList<Integer> getDegrees() {
+        return degree;
+    }
+    
     @Override
     public String toString() {
         return "Student{" + "semester=" + semester + ", username=" + this.username + ", password=" + password + ", name=" + name + ", surname=" + surname + ", birthday=" + birthday + ", email=" + email + ", phoneNumber=" + phoneNumber + ", registration=" + registration + '}';
-    }
-
-    public ArrayList<Integer> getDegrees() {
-        return degree;
     }
 
 }

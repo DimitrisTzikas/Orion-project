@@ -10,12 +10,12 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="486.0" prefWidth="743.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ManageCoursesStudentCON">
+<AnchorPane id="AnchorPane" prefHeight="486.0" prefWidth="743.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ManageCoursesStudentCON">
     <stylesheets>
         <URL value="@/CSS/mainui.css" />
     </stylesheets>
    <children>
-      <Pane layoutX="2.0" onMousePressed="#clickItem" prefHeight="486.0" prefWidth="743.0">
+      <Pane layoutX="2.0" prefHeight="486.0" prefWidth="743.0">
          <children>
             <Button fx:id="cancelButton" layoutX="48.0" layoutY="425.0" mnemonicParsing="false" onAction="#exit" prefWidth="141.0" text="Back" />
             <Label layoutX="33.0" layoutY="29.0" text="Courses">
@@ -24,16 +24,14 @@
                </font>
             </Label>
             <Line endX="405.5" layoutX="290.0" layoutY="42.0" startX="-156.0" />
-            <TableView fx:id="tTable" layoutX="226.0" layoutY="63.0" onMouseClicked="#clickItemR" prefHeight="158.0" prefWidth="292.0">
+            <TableView fx:id="selectedCoursesTable" layoutX="226.0" layoutY="63.0" onMouseClicked="#unselectCourse" prefHeight="158.0" prefWidth="292.0">
               <columns>
-                <TableColumn fx:id="tNameColumn" prefWidth="224.0" text="Name" />
-                <TableColumn fx:id="tDegreeColumn" minWidth="5.0" prefWidth="67.0" text="Degree" />
+                <TableColumn fx:id="selectedTitleCol" prefWidth="291.0" text="Name" />
               </columns>
             </TableView>
-            <TableView fx:id="aTable" layoutX="226.0" layoutY="243.0" onMouseClicked="#clickItem" prefHeight="158.0" prefWidth="292.0">
+            <TableView fx:id="availableCoursesTable" layoutX="226.0" layoutY="243.0" onMouseClicked="#selectCourse" prefHeight="158.0" prefWidth="292.0">
                <columns>
-                  <TableColumn fx:id="aNameColumn" prefWidth="230.0" text="Name" />
-                  <TableColumn fx:id="aAddColumn" prefWidth="61.0" text="ADD" />
+                  <TableColumn fx:id="availableTitleCol" prefWidth="291.0" text="Name" />
                </columns>
             </TableView>
             <Label layoutX="66.0" layoutY="129.0" text="Selected Courses">
@@ -46,7 +44,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button fx:id="addCoursesButton" layoutX="555.0" layoutY="425.0" mnemonicParsing="false" onAction="#addCourses" prefWidth="141.0" text="Add Courses" />
+            <Button layoutX="555.0" layoutY="425.0" mnemonicParsing="false" onAction="#addCourse" prefWidth="141.0" text="Add Courses" />
          </children>
       </Pane>
    </children>
