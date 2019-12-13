@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -24,6 +25,8 @@ public class ManageCoursesStudentCON {
     private TableView<Course> selectedCoursesTable, availableCoursesTable;
     @FXML
     private TableColumn<Course,String> selectedTitleCol, availableTitleCol;
+    @FXML
+    private Label outputLabel;
         
     public void initialize() {
        this.selectedTitleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
@@ -37,9 +40,16 @@ public class ManageCoursesStudentCON {
     public void selectCourse(MouseEvent event) {
         if(event.getClickCount() == 2) {
             try{
-                ManageCoursesStudentCON.selectedCourses.add(this.availableCoursesTable.getSelectionModel().getSelectedItem());
-                ManageCoursesStudentCON.availableCourses.remove(this.availableCoursesTable.getSelectionModel().getSelectedItem());
-                this.initialize();
+                if(((Student) Main.user).checkCourseRequirements(this.availableCoursesTable.getSelectionModel().getSelectedItem())){
+                    ManageCoursesStudentCON.selectedCourses.add(this.availableCoursesTable.getSelectionModel().getSelectedItem());
+                    ManageCoursesStudentCON.availableCourses.remove(this.availableCoursesTable.getSelectionModel().getSelectedItem());
+                    this.initialize();
+                    this.outputLabel.setText("");
+                }
+                else{
+                    this.outputLabel.setStyle("-fx-background-color: #ff8888");
+                    this.outputLabel.setText("You can't take the course");
+                }
             }catch(Exception ex){
                 System.out.println("Empty cell");
             }

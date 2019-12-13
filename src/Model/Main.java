@@ -35,17 +35,24 @@ public class Main extends javafx.application.Application {
         Course.addCourse(new Course("Math2", Compulsory, 120, 1, (Teacher) User.getUser(1)));
         Course.addCourse(new Course("Math3", Compulsory, 120, 1, (Teacher) User.getUser(1)));
         Course.addCourse(new Course("Math4", Compulsory, 120, 1, (Teacher) User.getUser(1)));
+        Course.addCourse(new Course("Math5", Compulsory, 120, 1, (Teacher) User.getUser(1)));
+        Course.addCourse(new Course("Math6", Compulsory, 120, 1, (Teacher) User.getUser(1)));
         Course.writeToFile();
         
         ((Teacher) User.getUser(1)).addCourse(Course.getCourse(0));
         ((Teacher) User.getUser(1)).addCourse(Course.getCourse(1));
         ((Teacher) User.getUser(1)).addCourse(Course.getCourse(2));
         ((Teacher) User.getUser(1)).addCourse(Course.getCourse(3));
+        ((Teacher) User.getUser(1)).addCourse(Course.getCourse(4));
+        ((Teacher) User.getUser(1)).addCourse(Course.getCourse(5));
+        
+        Course.getCourse(5).addRequiredCourse(Course.getCourse(4));
 
         Course.getCourse(2).addStudent((Student) User.getUser(0));
 	((Student) User.getUser(0)).addDegree(Course.getCourse(2), 3);
 	Course.getCourse(1).addStudent((Student) User.getUser(0));
 	((Student) User.getUser(0)).addDegree(Course.getCourse(1), 10);
+        
         
         launch(args);
     }
@@ -54,7 +61,7 @@ public class Main extends javafx.application.Application {
     public void start(Stage stage) throws IOException {
         //Main.loginCon = new LoginCON();
         //loginCon.Start(stage);
-        this.startMain(User.getUser(2).getUsername());
+        this.startMain(User.getUser(0).getUsername());
     }
     
     public static void startMain(String username) throws IOException {

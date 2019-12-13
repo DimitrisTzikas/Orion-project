@@ -20,6 +20,13 @@ public class Student extends User {
         this.dictionary = new HashMap<Course, Integer>();
     }
     
+    public boolean checkCourseRequirements(Course course) {
+        for(Course checkCourse:course.getRequiredCourses())
+            if(!this.courses.contains(checkCourse))
+                return false;
+        return true;
+    }
+    
     public ArrayList<Course> getCourses() {
         return new ArrayList<Course>(this.courses);
     }
