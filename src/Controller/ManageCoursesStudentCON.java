@@ -3,13 +3,9 @@ package Controller;
 import Model.Course;
 import Model.Main;
 import Model.Student;
-import java.io.IOException;
 import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -28,14 +24,6 @@ public class ManageCoursesStudentCON {
     private TableView<Course> selectedCoursesTable, availableCoursesTable;
     @FXML
     private TableColumn<Course,String> selectedTitleCol, availableTitleCol;
-
-    public void start(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../View/CoursesUIStudent.fxml"));
-	Scene scene = new Scene(root);
-	stage.setTitle("Courses");
-	stage.setScene(scene);
-	stage.show();
-    }
         
     public void initialize() {
        this.selectedTitleCol.setCellValueFactory(new PropertyValueFactory<>("title"));

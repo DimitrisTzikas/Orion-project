@@ -31,8 +31,7 @@ public class MainCON {
 	Scene scene = new Scene(root);
 	stage.setTitle("Orion");
 	stage.setScene(scene);
-	stage.show();
-        
+	stage.show();    
     }
 
     @FXML
@@ -131,10 +130,10 @@ public class MainCON {
     public void studentCourses() throws IOException
     {
         Parent root;
-        root = FXMLLoader.load(getClass().getResource("/View/CoursesUIStudent.fxml"));
+        root = FXMLLoader.load(getClass().getResource("/View/ManageCoursesStudentUI.fxml"));
         Scene scene = new Scene(root);
         Stage stage = new Stage();
-	stage.setTitle("Courses");
+	stage.setTitle("Add Courses");
 	stage.setScene(scene);
 	stage.show();       
     }
@@ -142,7 +141,7 @@ public class MainCON {
     public void studentViewCourses() throws IOException
     {
         Parent root;
-        root = FXMLLoader.load(getClass().getResource("/View/CoursesUIStudentView.fxml"));
+        root = FXMLLoader.load(getClass().getResource("/View/ManageCoursesStudentViewUI.fxml"));
         Scene scene = new Scene(root);
         Stage stage = new Stage();
 	stage.setTitle("View Courses");
