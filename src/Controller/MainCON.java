@@ -94,6 +94,17 @@ public class MainCON {
 	stage.setScene(scene);
 	stage.show();
     }
+    
+    @FXML
+    public void adminAddRequiredCourse() throws IOException {
+        Parent root;
+        root = FXMLLoader.load(getClass().getResource("/View/AdminAddRequiredCourseUI.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+	stage.setTitle("Add Required Course");
+	stage.setScene(scene);
+	stage.show();
+    }
     //End Admin
     
     //Teacher

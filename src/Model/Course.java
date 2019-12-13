@@ -19,6 +19,7 @@ public class Course implements Serializable {
     private int semester;
     private Teacher teacher;
     private ArrayList<Student> students;
+    private ArrayList<Course> requiredCourses;
     
     public Course(String title, CourseType type, int points, int semester) {
         this.title = title;
@@ -27,8 +28,9 @@ public class Course implements Serializable {
         this.semester = semester;
         this.teacher = null;
         this.students = new ArrayList<Student>();
+        this.requiredCourses = new ArrayList<Course>();
     }
-
+    
     public Course(String title, CourseType type, int points, int semester, Teacher teacher) {
         this.title = title;
         this.type = type;
@@ -36,6 +38,7 @@ public class Course implements Serializable {
         this.semester = semester;
         this.teacher = teacher;
         this.students = new ArrayList<Student>();
+        this.requiredCourses = new ArrayList<Course>();
     }
     
     public boolean hasTeacher() {
@@ -44,6 +47,18 @@ public class Course implements Serializable {
     
     public void addTeacher(Teacher teacher) {
         this.teacher = teacher;
+    }
+    
+    public void addRequiredCourse(Course course) {
+        this.requiredCourses.add(course);
+    }
+    
+    public boolean hasRequiredCourses() {
+        return (!this.requiredCourses.isEmpty());
+    }
+    
+    public ArrayList<Course> getRequiredCourses() {
+        return this.requiredCourses;
     }
     
     public static ArrayList<Course> getCoursesWithoutTeacher() {
@@ -68,7 +83,7 @@ public class Course implements Serializable {
     }
     
     public static ArrayList<Course> getCourses() {
-        return Course.courses;
+        return new ArrayList<Course>(Course.courses);
     }
     
     public String getTitle() {

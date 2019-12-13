@@ -42,7 +42,6 @@ public class Main extends javafx.application.Application {
         ((Teacher) User.getUser(1)).addCourse(Course.getCourse(2));
         ((Teacher) User.getUser(1)).addCourse(Course.getCourse(3));
 
-        
         Course.getCourse(2).addStudent((Student) User.getUser(0));
 	((Student) User.getUser(0)).addDegree(Course.getCourse(2), 3);
 	Course.getCourse(1).addStudent((Student) User.getUser(0));
@@ -55,7 +54,7 @@ public class Main extends javafx.application.Application {
     public void start(Stage stage) throws IOException {
         //Main.loginCon = new LoginCON();
         //loginCon.Start(stage);
-        this.startMain(User.getUser(0).getUsername());
+        this.startMain(User.getUser(2).getUsername());
     }
     
     public static void startMain(String username) throws IOException {

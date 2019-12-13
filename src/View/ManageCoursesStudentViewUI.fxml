@@ -41,6 +41,9 @@
                   <TableColumn fx:id="notPassedCoursesDegreeCol" minWidth="5.0" prefWidth="94.0" text="Degree" />
                </columns>
             </TableView>
+            <Label layoutX="134.0" layoutY="50.0" text="Not Passed" />
+            <Label layoutX="514.0" layoutY="50.0" text="Passed" />
+            <Label layoutX="349.0" layoutY="235.0" text="Running" />
          </children>
       </Pane>
    </children>
