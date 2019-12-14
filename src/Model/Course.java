@@ -63,16 +63,16 @@ public class Course implements Serializable {
     
     public static ArrayList<Course> getCoursesWithoutTeacher() {
         ArrayList<Course> temp = new ArrayList<Course>();
-        for(Course course: courses) {
+        for(Course course: Course.courses)
             if(!course.hasTeacher())
                 temp.add(course);
-        }
         return temp;
     }
     
     public static Course getCourse(String title) {
         for(Course course: Course.courses) {
-            if(title.equals(course.getTitle()))
+            if(title.equals(
+                    course.getTitle()))
                 return course;
         }
         return null;

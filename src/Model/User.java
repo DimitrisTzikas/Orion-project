@@ -79,18 +79,16 @@ public abstract class User implements Serializable {
     }
     
     public static Student getStudent(String username) {
-        for(User user:User.users) {
+        for(User user:User.users)
             if(user instanceof Student && ((Student) user).getUsername().equals(username))
                 return (Student) user;
-        }
         return null;
     }
     
     public static User find(String username) {
-        for(User user: users) {
+        for(User user: users)
             if(user.username.equals(username))
                 return user;
-        }
         return null;
     }
     

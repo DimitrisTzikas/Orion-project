@@ -8,6 +8,8 @@ import Model.User;
 import java.io.IOException;
 import java.util.ArrayList;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -42,7 +44,6 @@ public class AddDegreeCON {
         
          ArrayList<String> coursesTitle = new ArrayList<String>();
         
-        // TODO when program implemented right change main to MainCON
         ((Teacher) Main.user).getCourses().forEach((course) -> {
             coursesTitle.add(course.getTitle());
         });
@@ -52,16 +53,21 @@ public class AddDegreeCON {
     }
     
     public void courseSelected() {
-        this.comStudent.setDisable(false);
+
+        try{
+            this.comStudent.setDisable(false);
+            
+            ArrayList<Student> students = new ArrayList<Student>((Course.getCourse((String) this.comCourse.getValue())).getStudents());
+            ArrayList<String> studentsUsername = new ArrayList<String>();
         
-        ArrayList<Student> students = new ArrayList<Student>((Course.getCourse((String) this.comCourse.getValue())).getStudents());
-        ArrayList<String> studentsUsername = new ArrayList<String>();
+            students.forEach((student) -> {
+                studentsUsername.add(student.getUsername());
+            });
         
-        students.forEach((student) -> {
-            studentsUsername.add(student.getUsername());
-        });
-        
-        this.comStudent.setItems(FXCollections.observableList(studentsUsername));
+            this.comStudent.setItems(FXCollections.observableList(studentsUsername));
+        } catch(NullPointerException e){
+            System.out.println(e);
+        }
                 
     }
     
@@ -82,7 +88,22 @@ public class AddDegreeCON {
                 Integer.parseInt((String) this.comDegree.getValue()), 
                 (String) this.comCourse.getValue()
         );
-        this.initialize();
+        
+        this.comDegree.setOnAction(null);
+        this.comCourse.setOnAction(null);
+        this.comStudent.setOnAction(null);
+        
+        this.comDegree.setDisable(true);
+        this.comStudent.setDisable(true);
+        this.addDegreeButton.setDisable(true);
+        
+        this.comDegree.setValue(null);
+        this.comStudent.setValue(null);
+        this.comCourse.setValue(null);
+        
+        this.comDegree.setOnAction((Event event) -> {this.degreeSelected();});
+        this.comCourse.setOnAction((Event event) -> {this.courseSelected();});
+        this.comStudent.setOnAction((Event event) -> {this.studentSelected();});
     }
     
 }

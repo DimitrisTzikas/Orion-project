@@ -33,7 +33,6 @@ public class AddCourseCON {
     public void initialize() {
         
         ArrayList<Course> courses = new ArrayList<Course>(Course.getCourses());
-        // TODO Change this when you implement mainCON
         ArrayList<Course> stCourses = ((Student) Main.user).getCourses();
         
         for(Course course: stCourses) {

@@ -3,7 +3,6 @@ package Controller;
 import Model.Main;
 import Model.Secretariat;
 import Model.Teacher;
-import Model.User;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,8 +12,6 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class MainCON {
-    
-    private User user;
     
     public void startMain() throws IOException {
         this.start(new Stage());
