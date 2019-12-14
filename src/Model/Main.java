@@ -2,9 +2,7 @@ package Model;
 
 import Controller.LoginCON;
 import Controller.MainCON;
-import static Enum.CourseType.Compulsory;
 import java.io.IOException;
-import java.util.Date;
 import javafx.stage.Stage;
 
 public class Main extends javafx.application.Application {
@@ -15,17 +13,15 @@ public class Main extends javafx.application.Application {
     
     public static void main(String[] args) {
         // Import Data
-        /*
         User.importFromFile();
         System.out.println("Users imported");
         Course.importFromFile();
         System.out.println("Courses imported");
         Announcement.importFromFile();
         System.out.println("Announcements imported");
-        */
         // End Import Data
         
-        
+        /*
         User.addUser(new Student(1, "175042", "123456", "Dimitris", "Tzikas", new Date(), "email@email.com", "6900000000"));
         User.addUser(new Teacher("teacher1", "123456", "Xaris", "Xariou", new Date(), "email@email.com", "6900000000"));
         User.addUser(new Secretariat("admin", "123456", "add1", "add2", new Date(), "email@email.com", "6900000000"));
@@ -54,15 +50,15 @@ public class Main extends javafx.application.Application {
 	((Student) User.getUser(0)).addDegree(Course.getCourse(2), 3);
 	Course.getCourse(1).addStudent((Student) User.getUser(0));
 	((Student) User.getUser(0)).addDegree(Course.getCourse(1), 10);
+        */
         
         launch(args);
     }
     
     @Override
     public void start(Stage stage) throws IOException {
-        //Main.loginCon = new LoginCON();
-        //loginCon.Start(stage);
-        this.startMain(User.getUser(2).getUsername());
+        Main.loginCon = new LoginCON();
+        loginCon.Start(stage);
     }
     
     public static void startMain(String username) throws IOException {
@@ -70,6 +66,13 @@ public class Main extends javafx.application.Application {
         Main.loginCon = null;
         Main.mainCon = new MainCON();
         Main.mainCon.startMain();
+    }
+    
+    public static void exit() {
+        User.writeToFile();
+        Course.writeToFile();
+        Announcement.writeToFile();
+        System.exit(0);
     }
     
 }

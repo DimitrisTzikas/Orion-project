@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="486.0" prefWidth="743.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainCON">
+<AnchorPane id="AnchorPane" prefHeight="486.0" prefWidth="743.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainCON">
     <stylesheets>
         <URL value="@/CSS/mainui.css" />
     </stylesheets>
@@ -42,5 +42,6 @@
             <Font name="System Bold Italic" size="24.0" />
          </font>
       </Label>
+      <Button layoutX="568.0" layoutY="425.0" mnemonicParsing="false" onAction="#exit" text="Exit" />
    </children>
 </AnchorPane>

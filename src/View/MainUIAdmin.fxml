@@ -29,6 +29,7 @@
                </font>
             </Button>
             <Button layoutX="90.0" layoutY="309.0" mnemonicParsing="false" onAction="#adminAddRequiredCourse" text="Add Required Course" />
+            <Button layoutX="558.0" layoutY="415.0" mnemonicParsing="false" onAction="#exit" text="Exit" />
          </children>
       </Pane>
    </children>

@@ -8,10 +8,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class MainCON {
+    
+    @FXML
+    private Button exitButton;
     
     public void startMain() throws IOException {
         this.start(new Stage());
@@ -29,6 +33,11 @@ public class MainCON {
 	stage.setTitle("Orion");
 	stage.setScene(scene);
 	stage.show();    
+    }
+    
+    @FXML
+    public void exit() {
+        Main.exit();
     }
 
     @FXML
