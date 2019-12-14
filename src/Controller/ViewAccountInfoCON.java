@@ -30,8 +30,6 @@ public class ViewAccountInfoCON {
     
     public void initialize() {
         
-        // TODO change main to MainCON
-        
         this.labelUsername.setText(Main.user.getUsername());
         this.labelName.setText(Main.user.getName());
         this.labelSurname.setText(Main.user.getSurname());

@@ -55,7 +55,6 @@ public class Main extends javafx.application.Application {
 	Course.getCourse(1).addStudent((Student) User.getUser(0));
 	((Student) User.getUser(0)).addDegree(Course.getCourse(1), 10);
         
-        
         launch(args);
     }
     
@@ -63,7 +62,7 @@ public class Main extends javafx.application.Application {
     public void start(Stage stage) throws IOException {
         //Main.loginCon = new LoginCON();
         //loginCon.Start(stage);
-        this.startMain(User.getUser(0).getUsername());
+        this.startMain(User.getUser(1).getUsername());
     }
     
     public static void startMain(String username) throws IOException {
