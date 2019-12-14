@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 public class AdminAddRequiredCourseCON {
     
     @FXML
-    private Button exitButton;
+    private Button exitButton, addCourseButton;
     
     @FXML
     private TableView<Course> courseTable, requiredCourseTable;
@@ -24,7 +24,13 @@ public class AdminAddRequiredCourseCON {
     public void initialize() {
         this.courseTitleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
         this.courseTable.setItems(FXCollections.observableArrayList(Course.getCourses()));
+        this.addCourseButton.setDisable(true);
     }    
+    
+    @FXML
+    public void activateButton() {
+        this.addCourseButton.setDisable(this.requiredCourseTable.getSelectionModel().getSelectedItem() == null);
+    }
     
     @FXML
     public void selectCourseAction() {
@@ -53,6 +59,8 @@ public class AdminAddRequiredCourseCON {
         }catch(Exception ex){
             System.out.println("Empty cell");
         }
+
+        this.activateButton();
     }
     
     @FXML

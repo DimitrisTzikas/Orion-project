@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 public class CreateCourseCON {
     
     @FXML
-    private Button cancelButton;
+    private Button cancelButton, createCourseButton;
     
     @FXML
     private TextField titleInput;
@@ -25,15 +25,26 @@ public class CreateCourseCON {
     private Label output;
     
     public void initialize() {
-        
         this.comType.setItems(FXCollections.observableArrayList("Compulsory", "Optional"));
         this.comPoints.setItems(FXCollections.observableArrayList("1", "2", "3", "4", "5", "6", "7", "8", "9", "10"));
         this.comSemester.setItems(FXCollections.observableArrayList("1", "2", "3", "4", "5", "6", "7", "8", "9", "10"));
+        
+        this.titleInput.setText("");
+        this.comType.setValue("");
+        this.comSemester.setValue("");
+        this.comPoints.setValue("");
 
+        this.createCourseButton.setDisable(true);
     }
     
     public void cancel() {
         ((Stage) cancelButton.getScene().getWindow()).close();
+    }
+    
+    public void changeAction() {
+        this.createCourseButton.setDisable(
+                this.titleInput.getText().equals("") || this.comPoints.getValue().equals("") || this.comSemester.getValue().equals("") || this.comType.getValue().equals("")
+        );
     }
     
     public void createCourse() {

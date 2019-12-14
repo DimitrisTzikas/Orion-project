@@ -49,10 +49,23 @@ public class CreateUserCON {
         this.comSemester.setVisible(false);
         
         this.comDay.setItems(FXCollections.observableArrayList("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18"));
+        this.comDay.setValue("");
         this.comMonth.setItems(FXCollections.observableArrayList("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"));
+        this.comMonth.setValue("");
         this.comYear.setItems(FXCollections.observableArrayList("1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000"));
+        this.comYear.setValue("");
         this.comType.setItems(FXCollections.observableArrayList("Student", "Teacher", "Secretariat"));
+        this.comType.setValue("");
         this.comSemester.setItems(FXCollections.observableArrayList("1", "2", "3", "4", "5", "6", "7", "8", "9", "10"));
+        this.comSemester.setValue("");
+        
+        this.emailInput.setText("");
+        this.nameInput.setText("");
+        this.outputLabel.setText("");
+        this.passwordInput.setText("");
+        this.phoneNumberInput.setText("");
+        this.surnameInput.setText("");
+        this.usernameInput.setText("");
         
         this.createUserButton.setOnAction((ActionEvent event) -> {
             boolean flag = false;
@@ -69,7 +82,6 @@ public class CreateUserCON {
                             this.phoneNumberInput.getText()
                     ));
                 } catch (ParseException ex) {
-                    System.out.println(ex);
                 }
             }
             else if(this.comType.getValue().equals("Teacher")){
@@ -84,10 +96,9 @@ public class CreateUserCON {
                             this.phoneNumberInput.getText()
                     ));
                 } catch (ParseException ex) {
-                    System.out.println(ex);
                 }
             }
-            else{
+            else if(this.comType.getValue().equals("Secretariat")){
                 try {
                     flag = User.addUser(new Secretariat(
                             this.usernameInput.getText(),
@@ -99,26 +110,34 @@ public class CreateUserCON {
                             this.phoneNumberInput.getText()
                     ));
                 } catch (ParseException ex) {
-                    System.out.println(ex);
                 }
             }
             
             if(flag){
                 this.outputLabel.setText("User added");
-                // TODO ClearUI
+                this.outputLabel.setStyle("-fx-background-color: none");
+                this.initialize();
+                
             }
             else{
-                this.outputLabel.setText("error");
+                this.outputLabel.setText("Something is wrong");
+                this.outputLabel.setStyle("-fx-background-color: #ff8888");
             }
 
         });
         
     }    
     
+    @FXML
     public void checkType() {
-        this.comSemester.setVisible(this.comType.getValue().equals("Student"));
+        try{
+            this.comSemester.setVisible(this.comType.getValue().equals("Student"));
+        } catch(Exception e){
+            this.comSemester.setVisible(false);
+        }
     }
     
+    @FXML
     public void cancel(){
         ((Stage) cancelButton.getScene().getWindow()).close();
     }

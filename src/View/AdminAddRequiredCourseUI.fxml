@@ -16,12 +16,12 @@
             <TableColumn fx:id="courseTitleCol" prefWidth="320.0" text="Select Course" />
          </columns>
       </TableView>
-      <TableView fx:id="requiredCourseTable" layoutX="370.0" layoutY="39.0" prefHeight="200.0" prefWidth="321.0">
+      <TableView fx:id="requiredCourseTable" layoutX="370.0" layoutY="39.0" onMouseClicked="#activateButton" prefHeight="200.0" prefWidth="321.0">
          <columns>
             <TableColumn fx:id="requiredCourseTitleCol" prefWidth="320.0" text="Select Course" />
          </columns>
       </TableView>
       <Button fx:id="exitButton" layoutX="79.0" layoutY="332.0" mnemonicParsing="false" onAction="#exitAction" text="Exit" />
-      <Button layoutX="531.0" layoutY="345.0" mnemonicParsing="false" onAction="#addCourseAction" text="Add Course" />
+      <Button fx:id="addCourseButton" layoutX="531.0" layoutY="345.0" mnemonicParsing="false" onAction="#addCourseAction" text="Add Course" />
    </children>
 </AnchorPane>

@@ -20,7 +20,7 @@ public class ManageCoursesStudentCON {
     static ArrayList<Course> availableCourses = new ArrayList<Course>(((Student) Main.user).getAvaibleCourses());
     
     @FXML
-    private Button cancelButton;
+    private Button cancelButton, addCourseButton;
     @FXML 
     private TableView<Course> selectedCoursesTable, availableCoursesTable;
     @FXML
@@ -29,11 +29,13 @@ public class ManageCoursesStudentCON {
     private Label outputLabel;
         
     public void initialize() {
-       this.selectedTitleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
-       this.availableCoursesTable.setItems(FXCollections.observableArrayList(ManageCoursesStudentCON.availableCourses));
+        this.selectedTitleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
+        this.availableCoursesTable.setItems(FXCollections.observableArrayList(ManageCoursesStudentCON.availableCourses));
        
-       this.availableTitleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
-       this.selectedCoursesTable.setItems(FXCollections.observableArrayList(ManageCoursesStudentCON.selectedCourses)); // TODO
+        this.availableTitleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
+        this.selectedCoursesTable.setItems(FXCollections.observableArrayList(ManageCoursesStudentCON.selectedCourses));
+        
+        this.addCourseButton.setDisable(ManageCoursesStudentCON.selectedCourses.isEmpty());
     }
     
     @FXML

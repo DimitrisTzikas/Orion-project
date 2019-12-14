@@ -44,7 +44,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button layoutX="555.0" layoutY="425.0" mnemonicParsing="false" onAction="#addCourse" prefWidth="141.0" text="Add Courses" />
+            <Button fx:id="addCourseButton" layoutX="555.0" layoutY="425.0" mnemonicParsing="false" onAction="#addCourse" prefWidth="141.0" text="Add Courses" />
             <Label fx:id="outputLabel" layoutX="590.0" layoutY="221.0" text="output" />
          </children>
       </Pane>
