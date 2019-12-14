@@ -2,12 +2,8 @@ package Controller;
 
 import Enum.CourseType;
 import Model.Course;
-import java.io.IOException;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -17,7 +13,7 @@ import javafx.stage.Stage;
 public class CreateCourseCON {
     
     @FXML
-    private Button cancelButton, createCourseButton;
+    private Button cancelButton;
     
     @FXML
     private TextField titleInput;
@@ -27,14 +23,6 @@ public class CreateCourseCON {
     
     @FXML
     private Label output;
-    
-    public void start(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../View/CreateCourseUI.fxml"));
-	Scene scene = new Scene(root);
-	stage.setTitle("Create Course");
-	stage.setScene(scene);
-	stage.show();
-    }
     
     public void initialize() {
         

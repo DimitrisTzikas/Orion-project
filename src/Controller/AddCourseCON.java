@@ -3,13 +3,9 @@ package Controller;
 import Model.Course;
 import Model.Main;
 import Model.Student;
-import java.io.IOException;
 import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
@@ -20,15 +16,7 @@ public class AddCourseCON {
     private ComboBox comCourses;
     
     @FXML
-    private Button cancelButton, addCourseButton;
-    
-    public void start(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../View/AddCourseUI.fxml"));
-	Scene scene = new Scene(root);
-	stage.setTitle("Add Course");
-	stage.setScene(scene);
-	stage.show();
-    }
+    private Button cancelButton;
     
     public void initialize() {
         

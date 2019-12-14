@@ -73,7 +73,7 @@ public class MainCON {
     @FXML
     public void adminAddCourse() throws IOException {
         Parent root;
-        root = FXMLLoader.load(getClass().getResource("/View/AddCourseUI.fxml"));
+        root = FXMLLoader.load(getClass().getResource("/View/CreateCourseUI.fxml"));
         Scene scene = new Scene(root);
         Stage stage = new Stage();
 	stage.setTitle("Add Course");
