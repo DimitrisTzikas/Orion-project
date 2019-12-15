@@ -60,6 +60,13 @@ public class StudentNGTest {
         StudentNGTest.students.get(4).addDegree(StudentNGTest.courses.get(1), 8);
         StudentNGTest.students.get(4).addDegree(StudentNGTest.courses.get(2), 7);
         StudentNGTest.students.get(4).addDegree(StudentNGTest.courses.get(3), 8);
+        
+        // Add courses to Course class
+        Course.addCourse(StudentNGTest.courses.get(0));
+        Course.addCourse(StudentNGTest.courses.get(1));
+        Course.addCourse(StudentNGTest.courses.get(2));
+        Course.addCourse(StudentNGTest.courses.get(3));
+        Course.addCourse(StudentNGTest.courses.get(4));
     }
     
     @DataProvider(name = "testCheckCourseRequirements")
@@ -73,7 +80,7 @@ public class StudentNGTest {
             {StudentNGTest.students.get(2), StudentNGTest.courses.get(3), false},
             // Student with 3 of 3 required courses but one has degree 4
             {StudentNGTest.students.get(3), StudentNGTest.courses.get(3), false},
-            {StudentNGTest.students.get(4), StudentNGTest.courses.get(4), true},
+            {StudentNGTest.students.get(4), StudentNGTest.courses.get(4), true}
         };
     }
     
@@ -84,29 +91,81 @@ public class StudentNGTest {
         assertEquals(result, expResult);
     }
 
-    /*
-    @Test
-    public void testGetCourses() {
+    @DataProvider(name = "testGetCourses")
+    public static Object[][] getCoursesData() {
+        ArrayList<Course> courses1 = new ArrayList<Course>();
+        ArrayList<Course> courses2 = new ArrayList<Course>();
+        ArrayList<Course> courses3 = new ArrayList<Course>();
+        ArrayList<Course> courses4 = new ArrayList<Course>();
+        ArrayList<Course> courses5 = new ArrayList<Course>();
+        
+        courses1.add(StudentNGTest.students.get(0).getCourses().get(0));
+        courses1.add(StudentNGTest.students.get(0).getCourses().get(1));
+        courses1.add(StudentNGTest.students.get(0).getCourses().get(2));
+        
+        courses3.add(StudentNGTest.students.get(2).getCourses().get(0));
+        courses3.add(StudentNGTest.students.get(2).getCourses().get(1));
+        
+        courses4.add(StudentNGTest.students.get(3).getCourses().get(0));
+        courses4.add(StudentNGTest.students.get(3).getCourses().get(1));
+        courses4.add(StudentNGTest.students.get(3).getCourses().get(2));
+        
+        courses5.add(StudentNGTest.students.get(4).getCourses().get(0));
+        courses5.add(StudentNGTest.students.get(4).getCourses().get(1));
+        courses5.add(StudentNGTest.students.get(4).getCourses().get(2));
+        courses5.add(StudentNGTest.students.get(4).getCourses().get(3));
+        
+        return new Object[][]{
+            {StudentNGTest.students.get(0), courses1},
+            {StudentNGTest.students.get(1), courses2},
+            {StudentNGTest.students.get(2), courses3},
+            {StudentNGTest.students.get(3), courses4},
+            {StudentNGTest.students.get(4), courses5}
+        };
+    }
+    
+    @Test(dataProvider = "testGetCourses")
+    public void testGetCourses(Student student, ArrayList<Course> courses) {
         System.out.println("getCourses");
-        Student instance = null;
-        ArrayList expResult = null;
-        ArrayList result = instance.getCourses();
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        ArrayList result = student.getCourses();
+        assertEquals(result, courses);
+    }
+    
+    @DataProvider(name = "testGetAvaibleCourses")
+    public static Object[][] getAvailableCoursesData() {
+        ArrayList<Course> courses1 = new ArrayList<Course>();
+        ArrayList<Course> courses2 = new ArrayList<Course>(Course.getCourses());
+        ArrayList<Course> courses3 = new ArrayList<Course>();
+        ArrayList<Course> courses4 = new ArrayList<Course>();
+        ArrayList<Course> courses5 = new ArrayList<Course>();
+        
+        courses1.add(StudentNGTest.courses.get(3));
+        courses1.add(StudentNGTest.courses.get(4));
+        
+        courses3.add(StudentNGTest.courses.get(1));
+        courses3.add(StudentNGTest.courses.get(3));
+        courses3.add(StudentNGTest.courses.get(4));
+        
+        courses4.add(StudentNGTest.courses.get(2));
+        courses4.add(StudentNGTest.courses.get(3));
+        courses4.add(StudentNGTest.courses.get(4));
+        
+        return new Object[][]{
+            {StudentNGTest.students.get(0), courses1},
+            {StudentNGTest.students.get(1), courses2},
+            {StudentNGTest.students.get(2), courses3},
+            {StudentNGTest.students.get(3), courses4}
+        };
     }
 
-    @Test
-    public void testGetAvaibleCourses() {
+    @Test(dataProvider = "testGetAvaibleCourses")
+    public void testGetAvaibleCourses(Student student, ArrayList<Course> courses) {
         System.out.println("getAvaibleCourses");
-        Student instance = null;
-        ArrayList expResult = null;
-        ArrayList result = instance.getAvaibleCourses();
-        assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        ArrayList result = student.getAvaibleCourses();
+        assertEquals(result, courses);
     }
 
+    /*
     @Test
     public void testGetRunningCourses() {
         System.out.println("getRunningCourses");

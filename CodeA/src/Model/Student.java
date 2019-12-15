@@ -33,7 +33,7 @@ public class Student extends User {
     
     public ArrayList<Course> getAvaibleCourses() {
         ArrayList<Course> availableCourses = new ArrayList<Course>(Course.getCourses());
-        availableCourses.removeAll(this.courses);
+        availableCourses.removeAll(this.getPassedCourses());
         return availableCourses;
     }
     
