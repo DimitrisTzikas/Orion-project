@@ -1,4 +1,3 @@
-
 package Model;
 
 import Enum.AnnouncementType;
@@ -28,7 +27,7 @@ public class Announcement implements Serializable {
     
     
     public static boolean createAnnouncement(String title, AnnouncementType type, String description) {
-        if(title.equals("") || type.equals("") || description.equals(""))
+        if(title.equals("") || type == null || description.equals(""))
             return false;
         
         Announcement.announcements.add(new Announcement(title, type, description));

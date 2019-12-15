@@ -22,7 +22,7 @@ public class Student extends User {
     
     public boolean checkCourseRequirements(Course course) {
         for(Course checkCourse:course.getRequiredCourses())
-            if(!this.courses.contains(checkCourse))
+            if(!this.courses.contains(checkCourse) || this.getDegree(checkCourse) < 5)
                 return false;
         return true;
     }
@@ -90,10 +90,6 @@ public class Student extends User {
     
     public int getSemester() {
         return this.semester;
-    }
-
-    public ArrayList<Integer> getDegrees() {
-        return degree;
     }
     
     public Integer getDegree(Course course) {
