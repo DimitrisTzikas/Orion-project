@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ViewAccountInfoCON">
+    <stylesheets>
+        <URL value="@/CSS/viewaccountinfoui.css" />
+    </stylesheets>
+   <children>
+      <Button fx:id="exitButton" layoutX="33.0" layoutY="291.0" mnemonicParsing="false" onAction="#exit" text="Exit" />
+      <Label layoutX="54.0" layoutY="59.0" text="Name:" />
+      <Label fx:id="labelName" layoutX="117.0" layoutY="59.0" text="name" />
+      <Label layoutX="30.0" layoutY="33.0" text="Username" />
+      <Label fx:id="labelUsername" layoutX="117.0" layoutY="33.0" text="username" />
+      <Label layoutX="22.0" layoutY="91.0" text="Surname:" />
+      <Label fx:id="labelSurname" layoutX="117.0" layoutY="91.0" text="surname" />
+      <Label layoutX="34.0" layoutY="123.0" text="Birthday:" />
+      <Label fx:id="labelBirthday" layoutX="117.0" layoutY="123.0" text="birthday" />
+      <Label layoutX="54.0" layoutY="155.0" text="Email:" />
+      <Label fx:id="labelEmail" layoutX="117.0" layoutY="155.0" text="email" />
+      <Label layoutX="16.0" layoutY="192.0" text="PhoneNumber:" />
+      <Label fx:id="labelPhoneNumber" layoutX="135.0" layoutY="192.0" text="phoneNumber" />
+      <Label layoutX="22.0" layoutY="223.0" text="Registration:" />
+      <Label fx:id="labelRegistration" layoutX="127.0" layoutY="223.0" text="registration" />
+      <Label fx:id="labelSemester2" layoutX="29.0" layoutY="259.0" text="Semester:" visible="false" />
+      <Label fx:id="labelSemester" layoutX="122.0" layoutY="259.0" text="semester" visible="false" />
+   </children>
+</AnchorPane>
