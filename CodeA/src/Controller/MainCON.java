@@ -111,6 +111,17 @@ public class MainCON {
 	stage.setScene(scene);
 	stage.show();
     }
+    
+    @FXML
+    public void addDegreeToStudentAction() throws IOException  {
+        Parent root;
+        root = FXMLLoader.load(getClass().getResource("/View/AddDegreeToStudentUI.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+	stage.setTitle("Add Degree To Student");
+	stage.setScene(scene);
+	stage.show();
+    }
     //End Admin
     
     //Teacher

@@ -12,5 +12,9 @@ public class Secretariat extends User {
     public String toString() {
         return "Secretariat{" + "username=" + this.username + ", password=" + password + ", name=" + name + ", surname=" + surname + ", birthday=" + birthday + ", email=" + email + ", phoneNumber=" + phoneNumber + ", registration=" + registration + '}';
     }
+    
+    public boolean addDegreeToStudent(Student student, Course course, int degree){
+        return student.addDegree(course, degree);
+    }
 
 }

@@ -76,16 +76,15 @@ public class Announcement implements Serializable {
         }
     }
     
-    public static void importFromFile() {
+    public static void importFromFile() throws IOException {
         try{
             FileInputStream readData = new FileInputStream("Announcements.ser");
             ObjectInputStream readStream = new ObjectInputStream(readData);
 
             Announcement.announcements = (ArrayList<Announcement>) readStream.readObject();
             readStream.close();
-        }catch (Exception e) {
-            //e.printStackTrace();
-            System.out.println("CANT import ANNOUNCEMENTS");
+        }catch (ClassNotFoundException e) {
+            e.printStackTrace();
         }
     }
     

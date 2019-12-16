@@ -5,15 +5,10 @@ import Model.Main;
 import Model.Student;
 import Model.Teacher;
 import Model.User;
-import java.io.IOException;
 import java.util.ArrayList;
 import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
@@ -25,14 +20,6 @@ public class AddDegreeCON {
     
     @FXML
     ComboBox comCourse, comStudent, comDegree;
-    
-    public void start(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("../View/AddDegreeUI.fxml"));
-	Scene scene = new Scene(root);
-	stage.setTitle("Add Course");
-	stage.setScene(scene);
-	stage.show();
-    }
     
     public void initialize() {
         

@@ -129,14 +129,14 @@ public class Course implements Serializable {
         }
     }
     
-    public static void importFromFile() {
+    public static void importFromFile() throws IOException {
         try{
             FileInputStream readData = new FileInputStream("Courses.ser");
             ObjectInputStream readStream = new ObjectInputStream(readData);
 
             Course.courses = (ArrayList<Course>) readStream.readObject();
             readStream.close();
-        }catch (Exception e) {
+        }catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
     }

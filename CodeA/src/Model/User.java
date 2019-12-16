@@ -85,6 +85,14 @@ public abstract class User implements Serializable {
         return null;
     }
     
+    public static ArrayList<Student> getStudents() {
+        ArrayList<Student> students = new ArrayList<Student>();
+        for(User user:User.users)
+            if(user instanceof Student)
+                students.add((Student) user);
+        return students;
+    }
+    
     public static User find(String username) {
         for(User user: users)
             if(user.username.equals(username))
@@ -106,14 +114,14 @@ public abstract class User implements Serializable {
         }
     }
     
-    public static void importFromFile() {
+    public static void importFromFile() throws IOException {
         try{
             FileInputStream readData = new FileInputStream("Users.ser");
             ObjectInputStream readStream = new ObjectInputStream(readData);
 
             User.users = (ArrayList<User>) readStream.readObject();
             readStream.close();
-        }catch (Exception e) {
+        }catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
     }

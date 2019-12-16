@@ -3,6 +3,7 @@ package Model;
 import Controller.LoginCON;
 import Controller.MainCON;
 import java.io.IOException;
+import java.util.Date;
 import javafx.stage.Stage;
 
 public class Main extends javafx.application.Application {
@@ -12,22 +13,25 @@ public class Main extends javafx.application.Application {
     public static User user;
     
     public static void main(String[] args) {
-        // Import Data
-        User.importFromFile();
-        System.out.println("Users imported");
-        Course.importFromFile();
-        System.out.println("Courses imported");
-        Announcement.importFromFile();
-        System.out.println("Announcements imported");
-        // End Import Data
         
-        /*
-        User.addUser(new Student(1, "175042", "123456", "Dimitris", "Tzikas", new Date(), "email@email.com", "6900000000"));
-        User.addUser(new Teacher("teacher1", "123456", "Xaris", "Xariou", new Date(), "email@email.com", "6900000000"));
-        User.addUser(new Secretariat("admin", "123456", "add1", "add2", new Date(), "email@email.com", "6900000000"));
-        User.writeToFile();
-        Course.writeToFile();
-        */
+        try{
+            // Import Data
+            User.importFromFile();
+            System.out.println("Users imported");
+            Course.importFromFile();
+            System.out.println("Courses imported");
+            Announcement.importFromFile();
+            System.out.println("Announcements imported");
+            // End Import Data
+        } catch(Exception e){
+            User.addUser(new Student(1, "175042", "123456", "Dimitris", "Tzikas", new Date(), "email@email.com", "6900000000"));
+            User.addUser(new Teacher("teacher1", "123456", "Xaris", "Xariou", new Date(), "email@email.com", "6900000000"));
+            User.addUser(new Secretariat("admin", "123456", "add1", "add2", new Date(), "email@email.com", "6900000000"));
+            User.writeToFile();
+            Course.writeToFile();
+            Announcement.writeToFile();
+            System.out.println("Class Changed: init completed");
+        }
         
         launch(args);
     }
