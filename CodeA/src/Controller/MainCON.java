@@ -122,6 +122,18 @@ public class MainCON {
 	stage.setScene(scene);
 	stage.show();
     }
+
+    @FXML
+    public void teacherViewCourses() throws IOException
+    {      
+        Parent root;
+        root = FXMLLoader.load(getClass().getResource("/View/CoursesUITeacherView.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+	stage.setTitle("Courses");
+	stage.setScene(scene);
+	stage.show();
+    }
     //End Admin
     
     //Teacher
