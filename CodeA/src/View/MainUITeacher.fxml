@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -7,7 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="486.0" prefWidth="743.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainCON">
+<AnchorPane id="AnchorPane" prefHeight="486.0" prefWidth="743.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MainCON">
     <stylesheets>
         <URL value="@/CSS/mainui.css" />
     </stylesheets>
@@ -20,7 +25,7 @@
                   <Font name="System Bold Italic" size="14.0" />
                </font>
             </Button>
-            <Button layoutX="318.0" layoutY="226.0" mnemonicParsing="false" onAction="#teacherAddCourse" prefHeight="35.0" prefWidth="118.0" text="Add Course">
+            <Button layoutX="234.0" layoutY="226.0" mnemonicParsing="false" onAction="#teacherAddCourse" prefHeight="35.0" prefWidth="118.0" text="Add Course">
                <font>
                   <Font name="System Bold Italic" size="14.0" />
                </font>
@@ -41,6 +46,11 @@
                </font>
             </Button>
             <Button layoutX="162.0" layoutY="317.0" mnemonicParsing="false" onAction="#createAnnouncement" prefHeight="35.0" prefWidth="166.0" text="Create Anouncemetn">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+            </Button>
+            <Button layoutX="410.0" layoutY="226.0" mnemonicParsing="false" onAction="#teacherViewCourses" prefHeight="35.0" prefWidth="118.0" text="Courses">
                <font>
                   <Font name="System Bold Italic" size="14.0" />
                </font>
