@@ -8,6 +8,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Course implements Serializable {
     
@@ -19,6 +22,7 @@ public class Course implements Serializable {
     private int semester;
     private Teacher teacher;
     private ArrayList<Student> students;
+    Map<Student, Date> dictionary;
     private ArrayList<Course> requiredCourses;
     
     public Course(String title, CourseType type, int points, int semester) {
@@ -29,6 +33,7 @@ public class Course implements Serializable {
         this.teacher = null;
         this.students = new ArrayList<Student>();
         this.requiredCourses = new ArrayList<Course>();
+        this.dictionary = new HashMap<Student, Date>();
     }
     
     public Course(String title, CourseType type, int points, int semester, Teacher teacher) {
@@ -39,6 +44,7 @@ public class Course implements Serializable {
         this.teacher = teacher;
         this.students = new ArrayList<Student>();
         this.requiredCourses = new ArrayList<Course>();
+        this.dictionary = new HashMap<Student, Date>();
     }
     
     public boolean hasTeacher() {
@@ -86,6 +92,7 @@ public class Course implements Serializable {
         return new ArrayList<Course>(Course.courses);
     }
     
+    
     public String getTitle() {
         return this.title;
     }
@@ -114,6 +121,7 @@ public class Course implements Serializable {
     public void addStudent(Student student) {
         this.students.add(student);
         student.addCourse(this);
+        this.dictionary.put(student,new Date());
     }
     
     public static boolean createCourse(String title, CourseType type, int points, int semester) {

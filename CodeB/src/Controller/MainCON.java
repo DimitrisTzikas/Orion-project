@@ -156,6 +156,17 @@ public class MainCON {
 	stage.show();    
     
     }
+    @FXML
+    public void  adminStudentReport() throws IOException{
+        Parent root;
+        root = FXMLLoader.load(getClass().getResource("/View/StudentReportUI.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+	stage.setTitle("StudentReport");
+	stage.setScene(scene);
+	stage.show();    
+    
+    }
     //End Admin
     
     //Teacher

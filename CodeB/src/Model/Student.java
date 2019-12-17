@@ -11,6 +11,7 @@ public class Student extends User {
     private ArrayList<Course> courses;
     private ArrayList<Integer> degree;
     Map<Course, Integer> dictionary;
+    Map<Course, Date> dictionaryDates;
 
     public Student(int semester, String username, String password, String name, String surname, Date birthday, String email, String phoneNumber) {
         super(username, password, name, surname, birthday, email, phoneNumber);
@@ -18,6 +19,7 @@ public class Student extends User {
         this.courses = new ArrayList<Course>();
         this.degree = new ArrayList<Integer>();
         this.dictionary = new HashMap<Course, Integer>();
+        this.dictionaryDates = new HashMap<Course, Date>();
     }
     
     public boolean checkCourseRequirements(Course course) {
@@ -68,6 +70,7 @@ public class Student extends User {
         if(this.courses.indexOf(course) != -1){
             this.degree.add(this.courses.indexOf(course), degree);
             this.dictionary.replace(course, degree);
+            this.dictionaryDates.replace(course,new Date());
             return true;
         }
         return false;
@@ -77,6 +80,7 @@ public class Student extends User {
         this.courses.add(course);
         this.degree.add(-1);
         this.dictionary.put(course, -1);
+        this.dictionaryDates.put(course,new Date());
     }
     
     public String getUsername() {
@@ -86,6 +90,7 @@ public class Student extends User {
     public void addDegreeTo(int degree, String title) {
         this.degree.add(this.courses.indexOf(Course.getCourse(title)), degree);
         this.dictionary.replace(Course.getCourse(title), degree);
+        this.dictionaryDates.replace(Course.getCourse(title),new Date());
     }
     
     public int getSemester() {
