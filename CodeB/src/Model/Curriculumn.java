@@ -56,7 +56,7 @@ public class Curriculumn {
         }
     }
     
-    public static ArrayList<Course> getNONCurriculum(){
+    public static ArrayList<Course> getNonCurriculum(){
         ArrayList<Course> tempCurriculum = new ArrayList<>(Course.getCourses());
         tempCurriculum.removeAll(activeCurriculumCourses);
         return  tempCurriculum;

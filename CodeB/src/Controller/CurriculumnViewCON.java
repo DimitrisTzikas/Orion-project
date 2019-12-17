@@ -9,6 +9,7 @@ import Enum.CourseType;
 import Model.Course;
 import Model.Curriculumn;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -23,8 +24,10 @@ import javafx.stage.Stage;
  */
 public class CurriculumnViewCON {
     
+    private int currentSemester = 1;
+    
     @FXML
-    private Button cancelButton, semesterButton;
+    private Button cancelButton;
     @FXML
     private ComboBox semesterCombo;
     @FXML
@@ -44,17 +47,16 @@ public class CurriculumnViewCON {
         nameCol.setCellValueFactory(new PropertyValueFactory<>("title"));
         typeCol.setCellValueFactory(new PropertyValueFactory<>("type")); 
         pointsCol.setCellValueFactory(new PropertyValueFactory<>("points"));
-        
         this.semesterCombo.setItems(FXCollections.observableArrayList("1", "2", "3", "4", "5", "6", "7", "8", "9", "10"));
-        this.semesterCombo.setValue("1");
-        curriculumnTable.setItems(FXCollections.observableArrayList(Curriculumn.getCurriculum(1)));
+        if(this.semesterCombo.getValue()==null)
+            this.semesterCombo.setValue(currentSemester);
+        curriculumnTable.setItems(FXCollections.observableArrayList(Curriculumn.getCurriculum(currentSemester)));
     }
     
-    
-    
     @FXML
-    public void semesterLoad(){
-        curriculumnTable.setItems(FXCollections.observableArrayList(Curriculumn.getCurriculum(Integer.parseInt(this.semesterCombo.getValue()+""))));
+    public void comboAction(ActionEvent event) {
+            currentSemester = Integer.parseInt(this.semesterCombo.getValue()+"");
+            initialize();
     }
     
     @FXML
