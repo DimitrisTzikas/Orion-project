@@ -59,7 +59,7 @@ public class Main extends javafx.application.Application {
             
             //User story 2: Εισαγωγή μαθήματος στο πρόγραμμα σπουδών (works)
             Course.addCourse(new Course("Αντικειμενοστρεφής Προγραμματισμός (Θ)", Compulsory, 120, 1));
-            Course.addCourse(new Course("Αντικειμενοστρεφής Προγραμματισμός (Ε)", Compulsory, 220, 3));
+            Course.addCourse(new Course("Αντικειμενοστρεφής Προγραμματισμός (Ε)", Compulsory, 220, 1));
             Course.addCourse(new Course("Δομές Δεδομένων και Ανάλυση Αλγορίθμων", Compulsory, 320, 2));
             Course.addCourse(new Course("Μηχανική Λογισμικού", Compulsory, 420, 4));
            
@@ -106,6 +106,7 @@ public class Main extends javafx.application.Application {
     }
     
     public static void exit() {
+        System.out.println("Class Changed: data saved");
         User.writeToFile();
         Course.writeToFile();
         Announcement.writeToFile();
