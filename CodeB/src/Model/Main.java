@@ -75,8 +75,8 @@ public class Main extends javafx.application.Application {
             
             //User story 5: Εισαγωγή βαθμολογιών (από γραμματεία ή καθηγητή)
             ((Student) User.getStudent("151234")).addDegreeTo(6,"Αντικειμενοστρεφής Προγραμματισμός (Θ)");
-            //((Student) User.getStudent("163217")).addDegreeTo(7,"Αντικειμενοστρεφής Προγραμματισμός (Θ)"); bug index -1
-            //((Student) User.getStudent("172278")).addDegreeTo(4,"Μηχανική Λογισμικού");  bug index -1
+            ((Student) User.getStudent("172278")).addDegreeTo(7,"Αντικειμενοστρεφής Προγραμματισμός (Θ)");
+            ((Student) User.getStudent("172278")).addDegreeTo(4,"Δομές Δεδομένων και Ανάλυση Αλγορίθμων"); 
             
               //==================================================================//
              //                 CUSTOM DATA REQUIRED BY THE TEACHER END          //
