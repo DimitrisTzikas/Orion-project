@@ -30,6 +30,9 @@ public class Curriculumn {
         activeCurriculumCourses.remove(course);
     }
     
+    public static ArrayList<Course> getCurriculum(){
+        return activeCurriculumCourses;
+    }
     
     public static ArrayList<Course> getCurriculum(int semester){
         ArrayList<Course> tempCurriculum = new ArrayList<>();
@@ -51,6 +54,12 @@ public class Curriculumn {
         for (Course c :  tempCurriculum){
             System.out.println(c);
         }
+    }
+    
+    public static ArrayList<Course> getNONCurriculum(){
+        ArrayList<Course> tempCurriculum = new ArrayList<>(Course.getCourses());
+        tempCurriculum.removeAll(activeCurriculumCourses);
+        return  tempCurriculum;
     }
     
      public static void writeToFile() {

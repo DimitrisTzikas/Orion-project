@@ -12,26 +12,31 @@
         <URL value="@/CSS/mainui.css" />
     </stylesheets>
    <children>
-      <Pane prefHeight="486.0" prefWidth="743.0">
+      <Pane layoutX="7.0" layoutY="6.0" prefHeight="486.0" prefWidth="743.0">
          <children>
             <Label text="Admin" />
-            <Button layoutX="82.0" layoutY="271.0" mnemonicParsing="false" onAction="#adminAddCourse" text="Add Course" />
-            <Button layoutX="325.0" layoutY="271.0" mnemonicParsing="false" onAction="#profile" prefHeight="26.0" prefWidth="93.0" text="Profile" />
-            <Button layoutX="203.0" layoutY="271.0" mnemonicParsing="false" onAction="#adminAddUser" text="Add User" />
-            <Button layoutX="454.0" layoutY="348.0" mnemonicParsing="false" onAction="#viewAnnouncement" prefHeight="35.0" prefWidth="166.0" text="View Announcemetn">
+            <Button layoutX="107.0" layoutY="287.0" mnemonicParsing="false" onAction="#adminAddCourse" prefHeight="35.0" prefWidth="166.0" text="Add Course" />
+            <Button layoutX="479.0" layoutY="287.0" mnemonicParsing="false" onAction="#profile" prefHeight="35.0" prefWidth="158.0" text="Profile" />
+            <Button layoutX="107.0" layoutY="338.0" mnemonicParsing="false" onAction="#adminAddUser" prefHeight="35.0" prefWidth="166.0" text="Add User" />
+            <Button layoutX="293.0" layoutY="397.0" mnemonicParsing="false" onAction="#viewAnnouncement" prefHeight="35.0" prefWidth="166.0" text="View Announcemetn">
                <font>
                   <Font name="System Bold Italic" size="14.0" />
                </font>
             </Button>
-            <Button layoutX="193.0" layoutY="348.0" mnemonicParsing="false" onAction="#createAnnouncement" prefHeight="35.0" prefWidth="166.0" text="Create Anouncemetn">
+            <Button layoutX="107.0" layoutY="397.0" mnemonicParsing="false" onAction="#createAnnouncement" prefHeight="35.0" prefWidth="166.0" text="Create Anouncemetn">
                <font>
                   <Font name="System Bold Italic" size="14.0" />
                </font>
             </Button>
-            <Button layoutX="90.0" layoutY="309.0" mnemonicParsing="false" onAction="#adminAddRequiredCourse" text="Add Required Course" />
-            <Button layoutX="558.0" layoutY="415.0" mnemonicParsing="false" onAction="#exit" text="Exit" />
-            <Button layoutX="328.0" layoutY="309.0" mnemonicParsing="false" onAction="#addDegreeToStudentAction" text="Add Degree To Student" />
-            <Button layoutX="530.0" layoutY="167.0" mnemonicParsing="false" onAction="#ViewCurriculumn" prefHeight="35.0" prefWidth="134.0" text="View Curriculum">
+            <Button layoutX="300.0" layoutY="287.0" mnemonicParsing="false" onAction="#adminAddRequiredCourse" prefHeight="35.0" prefWidth="166.0" text="Add Required Course" />
+            <Button layoutX="17.0" layoutY="439.0" mnemonicParsing="false" onAction="#exit" text="Exit" />
+            <Button layoutX="298.0" layoutY="338.0" mnemonicParsing="false" onAction="#addDegreeToStudentAction" prefHeight="35.0" prefWidth="166.0" text="Add Degree To Student" />
+            <Button layoutX="479.0" layoutY="338.0" mnemonicParsing="false" onAction="#adminViewCurriculumn" prefHeight="35.0" prefWidth="158.0" text="View Curriculum">
+               <font>
+                  <Font name="System Bold Italic" size="14.0" />
+               </font>
+            </Button>
+            <Button layoutX="479.0" layoutY="397.0" mnemonicParsing="false" onAction="#adminManageCurriculumn" prefHeight="35.0" prefWidth="158.0" text="Manage Curriculum">
                <font>
                   <Font name="System Bold Italic" size="14.0" />
                </font>

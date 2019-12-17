@@ -35,7 +35,7 @@
                   <Font name="System Bold Italic" size="14.0" />
                </font>
             </Button>
-            <Button layoutX="273.0" layoutY="417.0" mnemonicParsing="false" onAction="#ViewCurriculumn" prefHeight="35.0" prefWidth="134.0" text="View Curriculum">
+            <Button layoutX="273.0" layoutY="417.0" mnemonicParsing="false" onAction="#studentViewCurriculumn" prefHeight="35.0" prefWidth="134.0" text="View Curriculum">
                <font>
                   <Font name="System Bold Italic" size="14.0" />
                </font>

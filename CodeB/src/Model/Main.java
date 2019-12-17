@@ -39,7 +39,9 @@ public class Main extends javafx.application.Application {
             User.writeToFile();
             Course.writeToFile();
             Announcement.writeToFile();
+            Curriculumn.writeToFile();
             System.out.println("Class Changed: init completed");
+        
         }
         
         launch(args);

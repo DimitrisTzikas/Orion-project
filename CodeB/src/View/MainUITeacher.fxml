@@ -50,7 +50,7 @@
                   <Font name="System Bold Italic" size="14.0" />
                </font>
             </Button>
-            <Button layoutX="100.0" layoutY="317.0" mnemonicParsing="false" onAction="#ViewCurriculumn" prefHeight="35.0" prefWidth="134.0" text="View Curriculum">
+            <Button layoutX="100.0" layoutY="317.0" mnemonicParsing="false" onAction="#teacherViewCurriculumn" prefHeight="35.0" prefWidth="134.0" text="View Curriculum">
                <font>
                   <Font name="System Bold Italic" size="14.0" />
                </font>

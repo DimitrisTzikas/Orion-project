@@ -134,6 +134,28 @@ public class MainCON {
 	stage.setScene(scene);
 	stage.show();
     }
+    @FXML
+    public void  adminViewCurriculumn() throws IOException{
+        Parent root;
+        root = FXMLLoader.load(getClass().getResource("/View/CurriculumnViewUI.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+	stage.setTitle("View Curriculumn");
+	stage.setScene(scene);
+	stage.show();    
+    
+    }
+    @FXML
+    public void  adminManageCurriculumn() throws IOException{
+        Parent root;
+        root = FXMLLoader.load(getClass().getResource("/View/CurriculumnManageUI.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+	stage.setTitle("Manage Curriculumn");
+	stage.setScene(scene);
+	stage.show();    
+    
+    }
     //End Admin
     
     //Teacher
@@ -163,6 +185,17 @@ public class MainCON {
 	stage.setScene(scene);
 	stage.show();
     }
+    @FXML
+    public void  teacherViewCurriculumn() throws IOException{
+        Parent root;
+        root = FXMLLoader.load(getClass().getResource("/View/CurriculumnViewUI.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+	stage.setTitle("View Curriculumn");
+	stage.setScene(scene);
+	stage.show();    
+    
+    }
     //End Teacher
     
     //Student    
@@ -188,9 +221,8 @@ public class MainCON {
 	stage.setScene(scene);
 	stage.show();       
     }
-    // End Student
-    
-    public void ViewCurriculumn() throws IOException{
+    @FXML
+    public void  studentViewCurriculumn() throws IOException{
         Parent root;
         root = FXMLLoader.load(getClass().getResource("/View/CurriculumnViewUI.fxml"));
         Scene scene = new Scene(root);
@@ -200,6 +232,9 @@ public class MainCON {
 	stage.show();    
     
     }
+    // End Student
+    
+   
     public void initialize() {
     }
     
