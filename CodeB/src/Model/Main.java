@@ -44,7 +44,12 @@ public class Main extends javafx.application.Application {
         
         }
         
-        launch(args);
+        if(args.length == 1 && args[0].equals("tui")){
+            (new Shell()).start();
+            
+        } else {
+            launch(args);
+        }
     }
     
     @Override
@@ -66,6 +71,6 @@ public class Main extends javafx.application.Application {
         Announcement.writeToFile();
         Curriculumn.writeToFile();
         System.exit(0);
-    }
+    }  
     
 }
