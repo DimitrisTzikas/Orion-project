@@ -56,9 +56,17 @@ public class Curriculumn {
         }
     }
     
-    public static ArrayList<Course> getNONCurriculum(){
+    public static ArrayList<Course> getNonCurriculum(){
         ArrayList<Course> tempCurriculum = new ArrayList<>(Course.getCourses());
-        tempCurriculum.removeAll(activeCurriculumCourses);
+        ArrayList<Course> coursesToRemove = new ArrayList<>();
+        tempCurriculum.forEach(tcourse -> {
+           activeCurriculumCourses.forEach(acourse->{
+               if(tcourse.getTitle().equals(acourse.getTitle())){
+                  coursesToRemove.add(tcourse);
+               }
+           });
+        });
+        tempCurriculum.removeAll(coursesToRemove);
         return  tempCurriculum;
     }
     

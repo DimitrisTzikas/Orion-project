@@ -23,7 +23,7 @@ import javafx.stage.Stage;
  */
 public class CurriculumnManageCON {
     private ArrayList<Course> activeCourses = new ArrayList<Course>();//Courses that will be added
-    private ArrayList<Course> nonActiveCourses = new ArrayList<Course>(Curriculumn.getNONCurriculum());// All courses - Already active curriculumn courses
+    private ArrayList<Course> nonActiveCourses = new ArrayList<Course>(Curriculumn.getNonCurriculum());// All courses - Already active curriculumn courses
     @FXML
     private Button cancelButton, applyButton;
     
@@ -71,6 +71,7 @@ public class CurriculumnManageCON {
             }
         }
     }
+    
     @FXML
     public void applyChanges() {
        Curriculumn.addCourse(activeCourses);

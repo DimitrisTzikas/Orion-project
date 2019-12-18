@@ -33,8 +33,7 @@
                </columns>
             </TableView>
             <Label layoutX="92.0" layoutY="180.0" text="Select Semester" />
-            <ComboBox fx:id="semesterCombo" layoutX="59.0" layoutY="231.0" prefWidth="150.0" />
-            <Button fx:id="semesterButton" layoutX="92.0" layoutY="285.0" mnemonicParsing="false" onAction="#semesterLoad" prefHeight="25.0" prefWidth="84.0" text="Load" />
+            <ComboBox fx:id="semesterCombo" layoutX="59.0" layoutY="231.0" onAction="#comboAction" prefWidth="150.0" />
          </children>
       </Pane>
    </children>
