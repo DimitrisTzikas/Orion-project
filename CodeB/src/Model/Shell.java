@@ -1,16 +1,18 @@
 package Model;
 
+import Enum.AnnouncementType;
 import Enum.CourseType;
 import java.io.Console;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 public class Shell {
 
-    private User user;
     private String prompt;
     private Console console;
     
     public Shell() {
-        this.user = null;
+        Main.user = null;
         this.prompt = "[none]$ ";
         this.console = System.console();
     }
@@ -28,6 +30,7 @@ public class Shell {
                 case "logout": this.logout(); break;
                 case "gui": this.gui(); break;
                 case "whoami": this.whoami(); break;
+                case "profile": this.viewProfile(); break;
                 case "help": this.help(); break;
                 case "help secretariat": this.helpSecretariat();break;
                 case "": break;
@@ -35,6 +38,11 @@ public class Shell {
                 // Admin's Commands
                 case "createCourse": this.createCourse(); break;
                 case "addRequiredCourse": this.addRequiredCourse(); break;
+                case "createUser": this.createUser(); break;
+                case "viewCurriculum": this.viewCurriculum(); break;
+                case "viewAnnouncement": this.viewAnnouncement(); break;
+                case "addDegreeToStudent": this.addDegreeToStudent(); break;
+                case "createAnnouncement": this.createAnnouncement(); break;
                 // Admin's Commands End
                 // Teacher's Commands
                 // Teacher's Commands End
@@ -47,7 +55,7 @@ public class Shell {
     
     // General Methods
     private void login() {
-        if(this.user != null){
+        if(Main.user != null){
             System.out.println("You are logged in");
         } else{
             String username = this.console.readLine("Username: ");
@@ -55,8 +63,8 @@ public class Shell {
             
             if(User.login(username, String.valueOf(password))){
                 System.out.println("Logged in");
-                this.user = User.find(username);
-                this.prompt = "[" + this.user.username + "]$ ";
+                Main.user = User.find(username);
+                this.prompt = "[" + Main.user.username + "]$ ";
             } else{
                 System.out.println("Wrong information");
             }
@@ -64,23 +72,23 @@ public class Shell {
     }
     
     private void logout() {
-        if(this.user == null){
+        if(Main.user == null){
             System.out.println("You aren't logged in");
         } else{
             System.out.println("Logged out");
-            this.user = null;
+            Main.user = null;
             this.prompt = "[none]$ ";
         }
     }
     
     private void whoami() {
         System.out.println("=====================================");
-        if(this.user == null){
+        if(Main.user == null){
             System.out.println("Guest");
         } else{
-            System.out.println("Username: " + this.user.username);
-            System.out.println("Name: " + this.user.name);
-            System.out.println("Surname: " + this.user.surname);
+            System.out.println("Username: " + Main.user.username);
+            System.out.println("Name: " + Main.user.name);
+            System.out.println("Surname: " + Main.user.surname);
         }
         System.out.println("=====================================");
     }
@@ -106,6 +114,9 @@ public class Shell {
                 + "\nlogin - login action"
                 + "\nlogout - logout action"
                 + "\nwhoami - prints user's information"
+                + "\nprofile - prints user's profile"
+                + "\nviewCurriculum - prints curriculum"
+                + "\nviewAnnouncement - prints announcement"
                 + "\ngui - starts default GUI"
                 + "\nexit - exit action"
         );
@@ -114,21 +125,55 @@ public class Shell {
     private void helpSecretariat() {
         System.out.println("createCourse - creates a new course"
                 + "\naddRequiredCourse - adds a required course to another course"
+                + "\naddDegreeToStudent - adds degree to a student"
+                + "\ncreateAnnouncement - create an announcement"
         );
     }
     
     private void helpTeacher() {
-        
+        System.out.println("createAnnouncement - create an announcement");
     }
     
     private void helpStudent() {
         
     }
+    
+    private void viewProfile() {
+        if(Main.user != null){
+            System.out.println("Username :" + Main.user.getUsername()
+                    + "\nName: " + Main.user.getName()
+                    + "\nSurname: " + Main.user.getSurname()
+                    + "\nBirthday: " + new SimpleDateFormat("dd/MM/yyyy").format(Main.user.getBirthday())
+                    + "\nEmail: " + Main.user.getEmail()
+                    + "\nPhone: " + Main.user.getPhoneNumber()
+                    + "\nRegistration date: " + new SimpleDateFormat("dd/MM/yyyy").format(Main.user.getRegistration())
+            );
+            if(Main.user instanceof Student){
+                System.out.println("Semester: " + ((Student) Main.user).getSemester());
+            }
+        } else{
+            System.out.println("You are guest");
+        }
+    }
+    
+    private void viewCurriculum() {
+        if(Main.user != null){
+            for(Course course:Curriculumn.getCurriculum(Integer.valueOf(this.console.readLine("Semester (1-10): ")))){
+                System.out.println(course.getTitle());
+            }
+        } else{
+            System.out.println("Permission denied");
+        }
+    }
+    
+    private void viewAnnouncement() {
+        System.out.println(Announcement.getAnnouncement());
+    }
     // General Methods End
     
     // Secretariat Methods 
     private boolean isSecretariat() {
-        return this.user != null && this.user instanceof Secretariat;
+        return Main.user != null && Main.user instanceof Secretariat;
     }
     
     private void createCourse() {
@@ -165,42 +210,126 @@ public class Shell {
         }
     }
     
-    // View profile
-    // Add User
-    // Add Degree To student
-    // view curriculum
-    // create Announcement
-    // view Announcement
-    // Mannage Curriculum
+    private void createUser() {
+        if(this.isSecretariat()){
+            String userType = this.console.readLine("What user do you want to create (1.Secretariat/2.Teacher/3.Student): ");
+            switch (userType) {
+                case "1":
+                    {
+                        String username = this.console.readLine("Username: ");
+                        char[] password = this.console.readPassword("Password: ");
+                        String name = this.console.readLine("Name: ");
+                        String surname = this.console.readLine("Surname: ");
+                        String date = this.console.readLine("Date (dd/MM/yyyy): ");
+                        String email = this.console.readLine("Email: ");
+                        String phoneNumber = this.console.readLine("Phone number: ");
+                        try{
+                            User.addUser(new Secretariat(username, String.valueOf(password), name, surname, (new SimpleDateFormat("dd/MM/yyyyyy")).parse(date), email, phoneNumber));
+                            System.out.println("User Created");
+                        } catch(ParseException ex){
+                            System.out.println("Invalid date");
+                        }       break;
+                    }
+                case "2":
+                    {
+                        String username = this.console.readLine("Username: ");
+                        char[] password = this.console.readPassword("Password: ");
+                        String name = this.console.readLine("Name: ");
+                        String surname = this.console.readLine("Surname: ");
+                        String date = this.console.readLine("Date (dd/MM/yyyy): ");
+                        String email = this.console.readLine("Email: ");
+                        String phoneNumber = this.console.readLine("Phone number: ");
+                        try{
+                            User.addUser(new Teacher(username, String.valueOf(password), name, surname, (new SimpleDateFormat("dd/MM/yyyyyy")).parse(date), email, phoneNumber));
+                            System.out.println("User Created");
+                        } catch(ParseException ex){
+                            System.out.println("Invalid date");
+                        }       break;
+                    }
+                case "3":
+                    {
+                        String username = this.console.readLine("Username: ");
+                        char[] password = this.console.readPassword("Password: ");
+                        String name = this.console.readLine("Name: ");
+                        String surname = this.console.readLine("Surname: ");
+                        String date = this.console.readLine("Date (dd/MM/yyyy): ");
+                        String email = this.console.readLine("Email: ");
+                        String phoneNumber = this.console.readLine("Phone number: ");
+                        String semester = this.console.readLine("Semster (1-10): ");
+                        try{
+                            User.addUser(new Student(Integer.parseInt(semester), username, String.valueOf(password), name, surname, (new SimpleDateFormat("dd/MM/yyyyyy")).parse(date), email, phoneNumber));
+                            System.out.println("User Created");
+                        } catch(ParseException ex){
+                            System.out.println("Invalid date");
+                        }       break;
+                    }
+                default:
+                    System.out.println("Not valid option");
+                    break;
+            }
+        } else{
+            System.out.println("Permission denied");
+        }
+    }
+    
+    private void addDegreeToStudent() {
+        if(this.isSecretariat()){
+            Student student = Student.getStudent(this.console.readLine("Student username: "));
+            String title = this.console.readLine("Course title: ");
+            int degree = Integer.parseInt(this.console.readLine("Degree (0-10): "));
+            student.addDegreeTo(degree, title);
+        } else{
+            System.out.println("Permission denied");
+        }
+    }
+    
+    private void createAnnouncement() {
+        if(this.isSecretariat() || this.isTeacher()){
+            String title = this.console.readLine("Title: ");
+            AnnouncementType announcementType = AnnouncementType.valueOf(this.console.readLine("AnnouncementType (General, Exam1-10): "));
+            String description = this.console.readLine("Description: ");
+            Announcement.createAnnouncement(title, announcementType, description);
+        } else{
+            System.out.println("Permission denied");
+        }
+    }
+    
+    private void manageCurriculum() {
+        // TODO
+    }
     
     // Secretariat Methods End
     
     // Teacher Methods    
     private boolean isTeacher() {
-        return this.user != null && this.user instanceof Teacher;
+        return Main.user != null && Main.user instanceof Teacher;
     }
     
-    // Add degree
-    // Add course
-    // View courses
-    // View profile
-    // View Curriculum
-    // Create Anouncements
-    // View announcement
+    private void addDegree() {
+        // TODO
+    }
+
+    private void addCourse() {
+        // TODO
+    }
     
+    private void viewCourse() {
+        // TODO
+    }
     // Teahcer Methods End
     
     // Student Methods   
     private boolean isStudent() {
-        return this.user != null && this.user instanceof Student;
+        return Main.user != null && Main.user instanceof Student;
     }
     
-    // Add course
-    // View profile
-    // View Announcements
-    // View course
-    // View Curriculum
+    private void addCourseStudent() {
+        //TODO
+    }
     
+    private void viewCourseStudent() {
+        //TODO
+    }
     // Student Methods End
     
 }
