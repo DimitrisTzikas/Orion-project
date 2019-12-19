@@ -45,8 +45,13 @@ public class Shell {
                 case "createAnnouncement": this.createAnnouncement(); break;
                 // Admin's Commands End
                 // Teacher's Commands
+                case "addDegree": this.addDegree(); break;
+                case "addCourse": this.addCourse(); break;
+                case "viewCourses": this.viewCourses(); break;
                 // Teacher's Commands End
                 // Student's Commands
+                case "addCourseStudent": this.addCourseStudent(); break;
+                case "viewCourseStudent": this.viewCourseStudent(); break;
                 // Student's Commands End
                 default: System.out.print("\"" + command + "\" is not a valid command\n");
             }
@@ -126,16 +131,21 @@ public class Shell {
         System.out.println("createCourse - creates a new course"
                 + "\naddRequiredCourse - adds a required course to another course"
                 + "\naddDegreeToStudent - adds degree to a student"
-                + "\ncreateAnnouncement - create an announcement"
+                + "\ncreateAnnouncement - create an announcement"                
         );
     }
     
     private void helpTeacher() {
-        System.out.println("createAnnouncement - create an announcement");
+        System.out.println("createAnnouncement - create an announcement"
+                + "\naddDegree - add degree to student's course"
+                + "\nviewCourses - view courses"
+        );
     }
     
     private void helpStudent() {
-        
+        System.out.println("addCourseStudent - add course to student"
+                + "\nviewCourseStudent - view student's courses"
+        );
     }
     
     private void viewProfile() {
@@ -158,7 +168,11 @@ public class Shell {
     
     private void viewCurriculum() {
         if(Main.user != null){
-            for(Course course:Curriculumn.getCurriculum(Integer.valueOf(this.console.readLine("Semester (1-10): ")))){
+            for(Course course:Curriculumn.getCurriculum(
+                    Integer.valueOf(
+                            this.console.readLine("Semester (1-10): ")
+                    )
+            )){
                 System.out.println(course.getTitle());
             }
         } else{
@@ -293,11 +307,6 @@ public class Shell {
             System.out.println("Permission denied");
         }
     }
-    
-    private void manageCurriculum() {
-        // TODO
-    }
-    
     // Secretariat Methods End
     
     // Teacher Methods    
@@ -306,15 +315,33 @@ public class Shell {
     }
     
     private void addDegree() {
-        // TODO
+        if(this.isTeacher()){
+            Student student = Student.getStudent(this.console.readLine("Student username: "));
+            Course course = Course.getCourse(this.console.readLine("Course title: "));
+            int degree = Integer.valueOf(this.console.readLine("Degree (0-10): "));
+            student.addDegree(course, degree);
+            System.out.println("Degree added");
+        } else{
+            System.out.println("Permission denied");
+        }
     }
 
     private void addCourse() {
-        // TODO
+        if(this.isTeacher()){
+            Course course = Course.getCourse(this.console.readLine("Course title: "));
+            ((Teacher) Main.user).addCourse(course);
+            System.out.println("Course added");
+        } else{
+            System.out.println("Permission denied");
+        }
     }
     
-    private void viewCourse() {
-        // TODO
+    private void viewCourses() {
+        if(this.isTeacher()){
+            System.out.println(((Teacher) Main.user).getCourses());
+        } else{
+            System.out.println("Permission denied");
+        }
     }
     // Teahcer Methods End
     
@@ -324,11 +351,23 @@ public class Shell {
     }
     
     private void addCourseStudent() {
-        //TODO
+        if(this.isStudent()){
+            ((Student) Main.user).addCourse(
+                    Course.getCourse(
+                            this.console.readLine("Course title: ")
+                    )
+            );
+        } else{
+            System.out.println("Permission denied");
+        }
     }
     
     private void viewCourseStudent() {
-        //TODO
+        if(this.isStudent()){
+            
+        } else{
+            System.out.println("Permission denied");
+        }
     }
     // Student Methods End
     
